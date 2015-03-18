@@ -1,0 +1,102 @@
+*ergonomic.txt*       For Vim version 7.3     Last change: 2015 March 18
+
+
+==============================================================================
+CONTENTS                                               *ergonomicContents*
+
+    1.Intro...................................|ergonomic|
+    2.Note to use..............................|CAPSLOCK|
+    3.Insert Mode Remappings............|ergonomicInsert|
+
+
+==============================================================================
+1. Intro                                                           *ergonomic*
+
+the vim.ergonomic plugin adds a few key mappings which make vim much easier on
+the hands for the average programmer
+
+It goes off of a central theory: most people hardly use the j key, and if
+they do, they never use "jj". Yet it is right there, sitting on the home row
+under your main finger.
+
+Similarly, they might use "J", but they probably don't have much use for JO
+
+Rather than learn a completely new way to type (i.e. devorak), let's just 
+take advantage of that inefficiency!
+
+What would we, as programers, most like to make easy to type?
+
+My main beef (with the C langauge (cough cough) is that  typing the brackets
+[], (), {} or <> can cause wear and tear on the fingers
+
+Similarly, having to constantly move the hand to hit backspace or enter is a
+pain.
+
+Vim ergonomics attempts to help these issues with several remappings in
+INSERT mode. It's main philosophy is "abuse the 'j' key", and that is what it
+does!
+
+
+==============================================================================
+2. Note to user                                                     *CAPSLOCK*
+
+There is one thing that vim.ergonomic can't do that you can: Remap that
+damn CAPSLOCK key to Cntrl. This will make Cntrl much easier to hit
+and you shouldn't be using CAPSLOCK anyway
+
+
+==============================================================================
+3. Insert Mode Remappings                                    *ergonomicInsert*
+
+Removing the need to reach for the ESC key:
+  key combo     mapping         purpose
+  jj            <ESC>           can exit edit mode quickly and easily
+  Jj            j               can type 'j' when you need to
+  JJ            J               can type 'J' when you need to
+
+
+Making it easier to insert various kinds of braces:
+  key combo     mapping         purpose
+  JU            ()<left>        easier to create parenthesis
+  JI            []<left>        easier to create square brackets
+  JM            {}<left>        eaiser to create curly braces
+  J<            <><left>        easier to create carrot braces
+
+
+Make it easier to move small distances (especially useful with braces commands):
+  JL            <left>          move left in insert mode
+  JH            <right>         move right in insert mode
+
+
+Removeing any need for enter, backspace or delete:
+  JB            <esc>ldbi       delete the previous word
+  JW            <esc>dwi        delete the next word
+  JO            <esc>oi         insert line and go to it
+
+
+These minor changes in vim allow you to keep your hands permanently
+on the home row as much as possible
+
+Example:
+    say you had to write the following code:
+        data[i] = 42;
+
+    normally this would require you to move off of the home keys a whole lot. 
+    In particular, You would have to move your hand to reach the [ key, press "i" 
+    then press the ] key
+
+    With vim.ergonomic, you do the following:
+        i               # go into insert mode
+        data            # type the word normally
+        JI              # starts brackets, looks like: data[*]  (* is location of cursor)
+        i               # insert character "i"
+        JL              # move one character to the right: data[i]*
+         = 42;          # type this part normally
+        JO              # go to next line, no need to hit enter
+        jj              # exit insert mode to do some commands
+
+
+Thankyou for reading this guide. If you like vim.ergonomic, please star it on github at
+git@github.com:cloudformdesign/vim.ergonomic.git
+
+If you have any suggestions or issues, leave a comment there
